@@ -1,6 +1,10 @@
 import { MediaCard } from "./_components/media/MediaCard";
 import { fetchTrending } from "./_lib/api";
 
+// Render per-request: the trending data comes from the backend API,
+// which isn't reachable at build time on Vercel.
+export const dynamic = "force-dynamic";
+
 export default async function Home() {
   // This executes entirely on the server
   const trendingData = await fetchTrending();
